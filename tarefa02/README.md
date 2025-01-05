@@ -48,7 +48,7 @@ O programa imprimirá continuamente o estado dos trens e dos mutexes em uma tabe
 Use o seguinte comando para compilar o código:
 
 ```bash
-g++ -o tarefa2 tarefa2.cpp -lpthread
+g++ -o tarefa2 tarefa2.c -lpthread
 ```
 
 ### **Execução**
