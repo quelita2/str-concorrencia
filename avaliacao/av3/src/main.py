@@ -2,12 +2,11 @@ from tkinter import *
 import threading
 import time
 
-track_lock_1 = threading.Lock()
-track_lock_2 = threading.Lock()
-track_lock_3 = threading.Lock()
-track_lock_4 = threading.Lock()
-track_lock_5 = threading.Lock()
-track_lock_6 = threading.Lock()
+trilho_lock_1 = threading.Lock()
+trilho_lock_2 = threading.Lock()
+trilho_lock_3 = threading.Lock()
+trilho_lock_4 = threading.Lock()
+trilho_lock_5 = threading.Lock()
 
 class TremController():
 
@@ -24,7 +23,7 @@ class TremController():
     def setup_interface(self):
         self.root = Tk()
         self.root.title('Problema dos 4 Trens')
-        self.root.geometry('600x900')
+        self.root.geometry('570x700')
         self.root.config(bg='#fff')
         self.canvas = Canvas(self.root, height=850, width=900, bg="white")
         self.canvas.pack()
@@ -49,18 +48,18 @@ class TremController():
                 self.canvas.move(self.trem_1, 10, 0)
                 self.trem_1_distance += 1
                 time.sleep(self.trem_1_speed)
-            track_lock_1.acquire()
+            trilho_lock_1.acquire()
             while 16 <= self.trem_1_distance < 33:
                 self.canvas.move(self.trem_1, 0, 10)
                 self.trem_1_distance += 1
                 time.sleep(self.trem_1_speed)
-            track_lock_1.release()
-            track_lock_2.acquire()
+            trilho_lock_1.release()
+            trilho_lock_2.acquire()
             while 33 <= self.trem_1_distance < 50:
                 self.canvas.move(self.trem_1, -10, 0)
                 self.trem_1_distance += 1
                 time.sleep(self.trem_1_speed)
-            track_lock_2.release()
+            trilho_lock_2.release()
             while 50 <= self.trem_1_distance < 67:
                 self.canvas.move(self.trem_1, 0, -10)
                 self.trem_1_distance += 1
@@ -77,24 +76,24 @@ class TremController():
                 self.canvas.move(self.trem_2, 10, 0)
                 self.trem_2_distance += 1
                 time.sleep(self.trem_2_speed)
-            track_lock_3.acquire()
+            trilho_lock_3.acquire()
             while 16 <= self.trem_2_distance < 33:
                 self.canvas.move(self.trem_2, 0, 10)
                 self.trem_2_distance += 1
                 time.sleep(self.trem_2_speed)
-            track_lock_3.release()
-            track_lock_4.acquire()
+            trilho_lock_3.release()
+            trilho_lock_4.acquire()
             while 33 <= self.trem_2_distance < 50:
                 self.canvas.move(self.trem_2, -10, 0)
                 self.trem_2_distance += 1
                 time.sleep(self.trem_2_speed)
-            track_lock_4.release()
-            track_lock_1.acquire()
+            trilho_lock_4.release()
+            trilho_lock_1.acquire()
             while 50 <= self.trem_2_distance < 67:
                 self.canvas.move(self.trem_2, 0, -10)
                 self.trem_2_distance += 1
                 time.sleep(self.trem_2_speed)
-            track_lock_1.release()
+            trilho_lock_1.release()
             if self.trem_2_distance == 67:
                 self.trem_2_distance = -1
                 self.canvas.move(self.trem_2, 10, 0)
@@ -111,18 +110,18 @@ class TremController():
                 self.canvas.move(self.trem_3, 0, 10)
                 self.trem_3_distance += 1
                 time.sleep(self.trem_3_speed)
-            track_lock_5.acquire()
+            trilho_lock_5.acquire()
             while 33 <= self.trem_3_distance < 50:
                 self.canvas.move(self.trem_3, -10, 0)
                 self.trem_3_distance += 1
                 time.sleep(self.trem_3_speed)
-            track_lock_5.release()
-            track_lock_3.acquire()
+            trilho_lock_5.release()
+            trilho_lock_3.acquire()
             while 50 <= self.trem_3_distance < 67:
                 self.canvas.move(self.trem_3, 0, -10)
                 self.trem_3_distance += 1
                 time.sleep(self.trem_3_speed)
-            track_lock_3.release()
+            trilho_lock_3.release()
             if self.trem_3_distance == 67:
                 self.trem_3_distance = -1
                 self.canvas.move(self.trem_3, 10, 0)
@@ -131,24 +130,24 @@ class TremController():
     def move_trem_4(self):
         while True:
             self.trem_4_distance += 1
-            track_lock_2.acquire()
-            track_lock_4.acquire()
-            track_lock_5.acquire()
-            while -1 < self.trem_4_distance < 16:
+            trilho_lock_2.acquire()
+            trilho_lock_4.acquire()
+            trilho_lock_5.acquire()
+            while -1 < self.trem_4_distance < 15:
                 self.canvas.move(self.trem_4, 10, 0)
                 self.trem_4_distance += 1
                 time.sleep(self.trem_4_speed)
-            track_lock_2.release()
-            while 16 <= self.trem_4_distance < 33:
+            trilho_lock_2.release()
+            while 15 <= self.trem_4_distance < 33:
                 self.canvas.move(self.trem_4, 10, 0)
                 self.trem_4_distance += 1
                 time.sleep(self.trem_4_speed)
-            track_lock_4.release()
+            trilho_lock_4.release()
             while 33 <= self.trem_4_distance < 50:
                 self.canvas.move(self.trem_4, 10, 0)
                 self.trem_4_distance += 1
                 time.sleep(self.trem_4_speed)
-            track_lock_5.release()
+            trilho_lock_5.release()
             while 50 <= self.trem_4_distance < 67:
                 self.canvas.move(self.trem_4, 0, 10)
                 self.trem_4_distance += 1
